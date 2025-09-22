@@ -1,0 +1,17 @@
+html,body,#__next { height: 100%; }
+body { margin: 0; background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 60%); color: #0f172a }
+
+h1 { font-size: 28px; margin: 0 0 8px 0 }
+
+.site-header { background: transparent; color: #0f172a; padding: 18px 0 }
+.site-header .container { max-width: 1000px; margin: 0 auto; padding: 0 16px; display: flex; align-items: center; justify-content: space-between }
+.header-inner { display: flex; align-items: center; justify-content: space-between }
+.brand { display: flex; align-items: center; gap: 12px }
+.site-title { margin: 0; font-size: 18px; font-weight: 600 }
+.site-nav a { margin-left: 12px; color: #0f172a; text-decoration: none; font-size: 14px }
+.site-nav a:hover { text-decoration: underline }
+
+.site-footer { background: rgba(255,255,255,0.8); color: #111827; padding: 12px 0; margin-top: 24px; border-top: 1px solid #e6e9ef }
+.site-footer .container { max-width: 1000px; margin: 0 auto; padding: 0 16px; font-size: 14px; text-align: center }
+
+.app-content { max-width: 1000px; margin: 24px auto; padding: 0 16px }
