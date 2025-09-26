@@ -47,7 +47,7 @@ export default function Dashboard() {
         await load()
         setEditingId(null)
         reset(emptyProduct())
-        setSuccessMessage('Product updated')
+        setSuccessMessage('Product updated !!')
         setTimeout(() => setSuccessMessage(''), 5000)
       } else {
         const res = await fetch('/api/products', {
@@ -58,7 +58,7 @@ export default function Dashboard() {
         if (!res.ok) throw new Error('Please fill all the product details')
         await load()
         reset(emptyProduct())
-        setSuccessMessage('Product created')
+        setSuccessMessage('Product created !!')
         setTimeout(() => setSuccessMessage(''), 5000)
       }
     } catch (e) {
@@ -79,7 +79,7 @@ export default function Dashboard() {
       const res = await fetch(`/api/products/${id}`, { method: 'DELETE' })
       if (!res.ok) throw new Error('Failed to delete')
       await load()
-      setSuccessMessage('Product deleted')
+      setSuccessMessage('Product deleted !!')
       setTimeout(() => setSuccessMessage(''), 5000)
     } catch (e) {
       setError(String(e))
