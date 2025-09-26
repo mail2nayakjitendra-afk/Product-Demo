@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import dynamic from 'next/dynamic'
+import DeleteModal from '../components/DeleteModal'
 
 function emptyProduct() {
   return { name: '', price: '', description: '' }
@@ -11,6 +12,7 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true)
   const [editingId, setEditingId] = useState(null)
   const [error, setError] = useState(null)
+  const [deleteState, setDeleteState] = useState({ open: false, id: null, name: '' })
 
   async function load() {
     setLoading(true)
@@ -60,7 +62,14 @@ export default function Dashboard() {
   }
 
   async function remove(id) {
-    if (!confirm('Delete this product?')) return
+    // open modal for confirmation — find name for display
+    const p = products.find((x) => x.id === id)
+    setDeleteState({ open: true, id, name: p ? p.name : 'product' })
+  }
+
+  async function confirmDelete() {
+    const id = deleteState.id
+    setDeleteState({ open: false, id: null, name: '' })
     try {
       const res = await fetch(`/api/products/${id}`, { method: 'DELETE' })
       if (!res.ok) throw new Error('Failed to delete')
@@ -68,6 +77,10 @@ export default function Dashboard() {
     } catch (e) {
       setError(String(e))
     }
+  }
+
+  function cancelDelete() {
+    setDeleteState({ open: false, id: null, name: '' })
   }
 
   // derived list (search + sort)
@@ -151,6 +164,7 @@ export default function Dashboard() {
               </tbody>
             </table>
           )}
+          <DeleteModal open={deleteState.open} itemName={deleteState.name} onConfirm={confirmDelete} onCancel={cancelDelete} />
         </div>
 
         <div style={{ width: 360 }}>

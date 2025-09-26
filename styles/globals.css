@@ -57,3 +57,12 @@ h1 { font-size: 28px; margin: 0 0 8px 0 }
 .controls { display: flex; gap: 12px; align-items: center; margin-bottom: 12px }
 .controls input[type="search"] { padding: 8px 10px; border: 1px solid #e2e8f0; border-radius: 8px }
 .controls select { padding: 8px 10px; border-radius: 8px }
+
+/* Modal styles */
+.modal-overlay { position: fixed; inset: 0; background: rgba(2,6,23,0.5); display: flex; align-items: center; justify-content: center; z-index: 9999 }
+.modal { background: white; padding: 16px; border-radius: 10px; max-width: 420px; width: 100%; box-shadow: 0 8px 24px rgba(2,6,23,0.3) }
+.modal h3 { margin: 0 0 8px 0 }
+.modal p { margin: 0; color: #475569 }
+.modal button { padding: 8px 12px; border-radius: 8px; border: 1px solid #d1d5db; background: #fff; cursor: pointer }
+.modal button.danger { background: #fee2e2; border-color: #fecaca }
+
