@@ -12,6 +12,7 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true)
   const [editingId, setEditingId] = useState(null)
   const [error, setError] = useState(null)
+  const [successMessage, setSuccessMessage] = useState('')
   const [deleteState, setDeleteState] = useState({ open: false, id: null, name: '' })
 
   async function load() {
@@ -46,6 +47,8 @@ export default function Dashboard() {
         await load()
         setEditingId(null)
         reset(emptyProduct())
+        setSuccessMessage('Product updated')
+        setTimeout(() => setSuccessMessage(''), 5000)
       } else {
         const res = await fetch('/api/products', {
           method: 'POST',
@@ -55,6 +58,8 @@ export default function Dashboard() {
         if (!res.ok) throw new Error('Please fill all the product details')
         await load()
         reset(emptyProduct())
+        setSuccessMessage('Product created')
+        setTimeout(() => setSuccessMessage(''), 5000)
       }
     } catch (e) {
       setError(String(e))
@@ -74,6 +79,8 @@ export default function Dashboard() {
       const res = await fetch(`/api/products/${id}`, { method: 'DELETE' })
       if (!res.ok) throw new Error('Failed to delete')
       await load()
+      setSuccessMessage('Product deleted')
+      setTimeout(() => setSuccessMessage(''), 5000)
     } catch (e) {
       setError(String(e))
     }
@@ -179,6 +186,7 @@ export default function Dashboard() {
             </div>
           </form>
           {error && <div style={{ color: 'red', marginTop: 8 }}>{error}</div>}
+          {successMessage && <div className="form-success" role="status">{successMessage}</div>}
         </div>
       </section>
     </main>

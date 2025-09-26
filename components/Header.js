@@ -1,9 +1,12 @@
 import Logo from './Logo'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
+import RealtimePanel from './RealtimePanel'
 
 export default function Header() {
   const router = useRouter()
+  const [openRealtime, setOpenRealtime] = useState(false)
 
   function goDashboard(e) {
     e.preventDefault()
@@ -24,8 +27,9 @@ export default function Header() {
         </div>
         <nav className="site-nav">
           <a href="/#dashboard" onClick={goDashboard}>Dashboard</a>
-          <Link href="/realtime">Realtime Events</Link>
+          <button className="linklike" onClick={(e) => { e.preventDefault(); setOpenRealtime(true) }}>Realtime</button>
         </nav>
+        <RealtimePanel open={openRealtime} onClose={() => setOpenRealtime(false)} />
       </div>
     </header>
   )

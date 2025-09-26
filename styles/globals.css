@@ -66,3 +66,28 @@ h1 { font-size: 28px; margin: 0 0 8px 0 }
 .modal button { padding: 8px 12px; border-radius: 8px; border: 1px solid #d1d5db; background: #fff; cursor: pointer }
 .modal button.danger { background: #fee2e2; border-color: #fecaca }
 
+/* Toast */
+.toast {
+	position: fixed;
+	right: 20px;
+	top: 20px;
+	background: #10b981; /* green */
+	color: white;
+	padding: 10px 14px;
+	border-radius: 8px;
+	box-shadow: 0 6px 18px rgba(2,6,23,0.2);
+	z-index: 10000;
+}
+
+/* Inline success below form */
+.form-success { margin-top: 8px; padding: 8px 10px; background: #ecfdf5; color: #065f46; border: 1px solid #bbf7d0; border-radius: 8px }
+
+/* Realtime drawer */
+.linklike { background: none; border: none; color: #0f172a; cursor: pointer; font-size: 14px; margin-left: 12px }
+.realtime-drawer { position: fixed; right: 16px; top: 80px; width: 360px; max-height: calc(100% - 120px); background: white; border-radius: 10px; box-shadow: 0 12px 40px rgba(2,6,23,0.3); z-index: 10000; overflow: auto; padding: 12px }
+.realtime-header { display: flex; justify-content: space-between; align-items: center; gap: 8px }
+.realtime-list { margin-top: 8px }
+.realtime-list ul { list-style: none; padding: 0; margin: 0 }
+.realtime-list li { padding: 6px 4px; border-bottom: 1px solid #f1f5f9 }
+.realtime-list .muted { color: #64748b; padding: 8px }
+
